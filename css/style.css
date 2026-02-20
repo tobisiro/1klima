@@ -112,25 +112,29 @@
 
         /* Premium Gradient Utilities */
         .text-gradient-premium {
-            background: linear-gradient(to right, #dc2626, #991b1b); /* Red 600 to Red 800 */
+            background: linear-gradient(to right, #dc2626, #991b1b);
+            /* Red 600 to Red 800 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .dark .text-gradient-premium {
-            background: linear-gradient(to right, #f87171, #fca5a5); /* Red 400 to Red 300 */
+            background: linear-gradient(to right, #f87171, #fca5a5);
+            /* Red 400 to Red 300 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .bg-gradient-premium {
-            background: linear-gradient(to right, #991b1b, #7f1d1d); /* Red 800 to Red 900 */
+            background: linear-gradient(to right, #991b1b, #7f1d1d);
+            /* Red 800 to Red 900 */
         }
 
         .dark .bg-gradient-premium {
-            background: linear-gradient(to right, #fef2f2, #fca5a5); /* Red 50 to Red 300 */
+            background: linear-gradient(to right, #fef2f2, #fca5a5);
+            /* Red 50 to Red 300 */
         }
 
         /* Naitec-inspired Utilities */
@@ -193,10 +197,10 @@
         /* Text Behind Image Effect */
         .text-behind {
             position: absolute;
-            top: 35%;
+            top: 42%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 15vw;
+            font-size: 18vw;
             font-weight: 900;
             color: rgba(0, 0, 0, 0.03);
             white-space: nowrap;
@@ -208,6 +212,7 @@
         @media (min-width: 768px) {
             .text-behind {
                 top: 50%;
+                font-size: 16vw;
             }
         }
 
