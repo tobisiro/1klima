@@ -112,25 +112,25 @@
 
         /* Premium Gradient Utilities */
         .text-gradient-premium {
-            background: linear-gradient(to right, #3b82f6, #64748b);
+            background: linear-gradient(to right, #dc2626, #991b1b); /* Red 600 to Red 800 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .dark .text-gradient-premium {
-            background: linear-gradient(to right, #60a5fa, #cbd5e1);
+            background: linear-gradient(to right, #f87171, #fca5a5); /* Red 400 to Red 300 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .bg-gradient-premium {
-            background: linear-gradient(to right, #1e293b, #0f172a);
+            background: linear-gradient(to right, #991b1b, #7f1d1d); /* Red 800 to Red 900 */
         }
 
         .dark .bg-gradient-premium {
-            background: linear-gradient(to right, #f8fafc, #cbd5e1);
+            background: linear-gradient(to right, #fef2f2, #fca5a5); /* Red 50 to Red 300 */
         }
 
         /* Naitec-inspired Utilities */
@@ -140,7 +140,7 @@
         }
 
         .btn-pill-primary {
-            background: linear-gradient(to right, #1e293b, #0f172a);
+            background: linear-gradient(to right, #991b1b, #7f1d1d);
             color: white;
             padding: 12px 32px;
             font-weight: 700;
@@ -151,14 +151,14 @@
         }
 
         .btn-pill-primary:hover {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.4);
             transform: translateY(-2px);
             opacity: 0.9;
         }
 
         .dark .btn-pill-primary {
-            background: linear-gradient(to right, #f8fafc, #cbd5e1);
-            color: #0f172a;
+            background: linear-gradient(to right, #fef2f2, #fca5a5);
+            color: #7f1d1d;
         }
 
         .dark .btn-pill-primary:hover {
