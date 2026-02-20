@@ -193,7 +193,7 @@
         /* Text Behind Image Effect */
         .text-behind {
             position: absolute;
-            top: 50%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 15vw;
@@ -203,6 +203,12 @@
             z-index: 0;
             pointer-events: none;
             user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .text-behind {
+                top: 50%;
+            }
         }
 
         .dark .text-behind {
