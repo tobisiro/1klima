@@ -170,13 +170,52 @@
             </div>
 
             <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <!-- Image -->
-                <div
-                    class="bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 p-12 flex items-center justify-center relative overflow-hidden group shadow-sm">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-slate-400/10 rounded-bl-full"></div>
-                    <!-- Real Image -->
-                    <img src="../img/kanion-rex.png" alt="Kanion Rex Detail"
-                        class="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-2xl dark:drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)]">
+                <!-- Gallery Container -->
+                <div class="flex flex-col gap-4">
+                    <!-- Main Image Viewer -->
+                    <div
+                        class="bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 p-8 md:p-12 flex items-center justify-center relative overflow-hidden shadow-sm h-80 md:h-96">
+                        <!-- Decorative Element -->
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-slate-400/10 rounded-bl-full pointer-events-none">
+                        </div>
+                        <img id="kanion-rex-main-image" src="../img/kanion_rex.png" alt="Kanion Rex Detail"
+                            class="w-full h-full object-contain drop-shadow-2xl dark:drop-shadow-[0_20px_50px_rgba(255,255,255,0.1)] transition-opacity duration-300 cursor-pointer hover:scale-105 transform"
+                            onclick="openLightbox()">
+                        <div
+                            class="absolute bottom-4 right-4 bg-white/80 dark:bg-black/50 p-2 rounded-full pointer-events-none opacity-50 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-text-main dark:text-white">zoom_in</span>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnails Grid -->
+                    <div class="grid grid-cols-5 gap-2 md:gap-4">
+                        <button onclick="changeMainImage('../img/kanion_rex.png', this, 0)"
+                            class="gallery-thumb active aspect-square bg-white dark:bg-surface-highlight border-2 border-primary overflow-hidden relative group">
+                            <img src="../img/kanion_rex.png" alt="Thumbnail 1"
+                                class="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-300">
+                        </button>
+                        <button onclick="changeMainImage('../img/kanion_rex-1.png', this, 1)"
+                            class="gallery-thumb aspect-square bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 hover:border-primary/50 overflow-hidden relative group transition-colors">
+                            <img src="../img/kanion_rex-1.png" alt="Thumbnail 2"
+                                class="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-300">
+                        </button>
+                        <button onclick="changeMainImage('../img/kanion_rex-2.png', this, 2)"
+                            class="gallery-thumb aspect-square bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 hover:border-primary/50 overflow-hidden relative group transition-colors">
+                            <img src="../img/kanion_rex-2.png" alt="Thumbnail 3"
+                                class="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-300">
+                        </button>
+                        <button onclick="changeMainImage('../img/kanion_rex-3.png', this, 3)"
+                            class="gallery-thumb aspect-square bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 hover:border-primary/50 overflow-hidden relative group transition-colors">
+                            <img src="../img/kanion_rex-3.png" alt="Thumbnail 4"
+                                class="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-300">
+                        </button>
+                        <button onclick="changeMainImage('../img/kanion_rex-4.png', this, 4)"
+                            class="gallery-thumb aspect-square bg-white dark:bg-surface-highlight border border-slate-200 dark:border-gray-800 hover:border-primary/50 overflow-hidden relative group transition-colors">
+                            <img src="../img/kanion_rex-4.png" alt="Thumbnail 5"
+                                class="w-full h-full object-contain p-2 transform group-hover:scale-110 transition-transform duration-300">
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Info -->
@@ -185,8 +224,8 @@
                         <span
                             class="text-gradient-premium font-bold tracking-widest uppercase text-sm block font-mono">Rex
                             Series</span>
-                        <img src="../img/kanion-logo.png" alt="Kanion Logo"
-                            class="h-14 object-contain opacity-90 drop-shadow-sm mix-blend-multiply dark:mix-blend-normal dark:invert">
+                        <img src="../img/Kanion_Logo.png" alt="Kanion Logo"
+                            class="h-14 object-contain opacity-90 drop-shadow-sm">
                     </div>
                     <h1 class="text-5xl font-black font-display text-text-main dark:text-white mb-6 uppercase">Kanion
                         Rex</h1>
@@ -671,7 +710,7 @@
                     localStorage.setItem('color-theme', 'dark');
                 } else {
                     document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
+                    localStorage.setItem('color-theme', 'dark');
                 }
             } else {
                 if (document.documentElement.classList.contains('dark')) {
@@ -688,6 +727,148 @@
 
         if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
         if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+    </script>
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox-modal"
+        class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <button onclick="closeLightbox()"
+            class="absolute top-6 right-6 text-white hover:text-primary transition-colors z-20">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+
+        <!-- Navigation Arrows -->
+        <button onclick="navLightbox(-1, event)"
+            class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-20 p-2">
+            <span class="material-symbols-outlined text-5xl md:text-6xl"
+                style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">chevron_left</span>
+        </button>
+        <button onclick="navLightbox(1, event)"
+            class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-20 p-2">
+            <span class="material-symbols-outlined text-5xl md:text-6xl"
+                style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">chevron_right</span>
+        </button>
+
+        <img id="lightbox-image" src="" alt="Enlarged Kanion Rex"
+            class="max-w-full max-h-[90vh] object-contain transform scale-95 transition-all duration-300 relative z-10">
+    </div>
+
+    <!-- Gallery Script -->
+    <script>
+        let currentItemIndex = 0;
+
+        function changeMainImage(src, clickedBtn, index) {
+            const mainImg = document.getElementById('kanion-rex-main-image');
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImage = document.getElementById('lightbox-image');
+
+            if (index !== undefined) {
+                currentItemIndex = index;
+            } else {
+                document.querySelectorAll('.gallery-thumb').forEach((btn, i) => {
+                    if (btn === clickedBtn) currentItemIndex = i;
+                });
+            }
+
+            // Fade out
+            mainImg.classList.add('opacity-0');
+            if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+                lightboxImage.classList.add('opacity-0', 'scale-95');
+                lightboxImage.classList.remove('scale-100');
+            }
+
+            setTimeout(() => {
+                // Change source
+                mainImg.src = src;
+                if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+                    lightboxImage.src = src;
+                }
+
+                // Fade back in
+                mainImg.classList.remove('opacity-0');
+                if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+                    lightboxImage.classList.remove('opacity-0', 'scale-95');
+                    lightboxImage.classList.add('scale-100');
+                }
+
+                // Update active state on thumbnails
+                document.querySelectorAll('.gallery-thumb').forEach(btn => {
+                    btn.classList.remove('border-2', 'border-primary', 'active');
+                    btn.classList.add('border', 'border-slate-200', 'dark:border-gray-800', 'hover:border-primary/50');
+                });
+
+                // Highlight clicked thumbnail
+                clickedBtn.classList.remove('border', 'border-slate-200', 'dark:border-gray-800', 'hover:border-primary/50');
+                clickedBtn.classList.add('border-2', 'border-primary', 'active');
+            }, 200); // Wait for fade out
+        }
+
+        function navLightbox(direction, event) {
+            if (event) event.stopPropagation(); // prevent closing lightbox
+            const thumbnails = document.querySelectorAll('.gallery-thumb');
+            let nextIndex = currentItemIndex + direction;
+
+            // Wrap around array
+            if (nextIndex < 0) nextIndex = thumbnails.length - 1;
+            if (nextIndex >= thumbnails.length) nextIndex = 0;
+
+            const nextBtn = thumbnails[nextIndex];
+            // Read src directly from the thumbnail image
+            const nextSrc = nextBtn.querySelector('img').src;
+
+            changeMainImage(nextSrc, nextBtn, nextIndex);
+        }
+
+        // Lightbox Functions
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const mainImage = document.getElementById('kanion-rex-main-image');
+
+        function openLightbox() {
+            lightboxImage.src = mainImage.src;
+            // Ensure currentItemIndex is set correctly when opening from main image
+            const activeThumbnail = document.querySelector('.gallery-thumb.active');
+            if (activeThumbnail) {
+                document.querySelectorAll('.gallery-thumb').forEach((btn, i) => {
+                    if (btn === activeThumbnail) currentItemIndex = i;
+                });
+            } else {
+                currentItemIndex = 0; // Default to first image if no active thumbnail
+            }
+
+            lightboxModal.classList.remove('hidden');
+            // Trigger reflow for transition
+            void lightboxModal.offsetWidth;
+            lightboxModal.classList.remove('opacity-0');
+            lightboxImage.classList.remove('scale-95');
+            lightboxImage.classList.add('scale-100');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('opacity-0');
+            lightboxImage.classList.remove('scale-100');
+            lightboxImage.classList.add('scale-95');
+            setTimeout(() => {
+                lightboxModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navLightbox(-1);
+                if (e.key === 'ArrowRight') navLightbox(1);
+            }
+        });
+
+        // Close on background click
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 
